@@ -1,0 +1,42 @@
+{
+  "name": "@atonomus/mcp-servers-search",
+  "version": "1.0.0",
+  "description": "MCP server for searching and discovering available MCP servers from the official repository",
+  "type": "module",
+  "main": "./index.js",
+  "bin": {
+    "mcp-servers-search": "./server.js"
+  },
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js",
+    "test": "mocha",
+    "prepublish": "npm run test && npm outdated && npm audit"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "mcp-tool",
+    "mcp-servers-search"
+  ],
+  "author": "George Mihailov (https://www.atonomus.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atonomus/mcp-servers-search.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "mocha": "^11.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "server.js"
+  ]
+}
