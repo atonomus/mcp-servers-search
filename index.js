@@ -15,7 +15,9 @@ export class MCPToolsQueryServer {
   #lastFetch = 0;
   #CACHE_DURATION = 3600000; // 1 hour cache
 
-  constructor() {
+  constructor({ cacheTtl = 3600000 } = {}) {
+    this.#CACHE_DURATION = cacheTtl;
+
     this.#server = new Server(
       {
         name: 'mcp-servers-search',

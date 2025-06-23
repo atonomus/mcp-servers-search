@@ -2,6 +2,8 @@
 
 An MCP (Model Context Protocol) server that provides tools for querying and discovering available MCP servers from the official [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) repository.
 
+**547 MCP servers as of June 2025.**
+
 ## Features
 
 - **List Servers**: Browse all available MCP servers with filtering by category

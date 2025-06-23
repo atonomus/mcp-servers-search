@@ -1,0 +1,6 @@
+{
+  "node-option": [
+    "experimental-modules"
+  ],
+  "spec": "test/**"
+}
