@@ -135,7 +135,7 @@ export class MCPToolsQueryServer {
       try {
         // Ensure we have data
         if (this.#servers.length === 0 || Date.now() - this.#lastFetch > this.#CACHE_DURATION) {
-          await this.#fetchServers();
+          await this.fetchServers();
         }
 
         const handlers = {
@@ -209,7 +209,7 @@ export class MCPToolsQueryServer {
     })
   }
 
-  async #fetchServers() {
+  async fetchServers() {
     try {
       const response = await fetch('https://raw.githubusercontent.com/modelcontextprotocol/servers/main/README.md');
       if (!response.ok) {
@@ -219,6 +219,7 @@ export class MCPToolsQueryServer {
 
       this.#servers = MCPToolsQueryServer.parseReadme(content);
       this.#lastFetch = Date.now();
+      return this.#servers;
       console.warn(`Fetched ${this.#servers.length} servers from README.md`);
     } catch (error) {
       throw new Error(`Failed to fetch server list: ${error?.message ?? 'Unknown error'}`);
@@ -291,7 +292,8 @@ export class MCPToolsQueryServer {
       }
     }
 
-    return servers;
+    return servers
+      .filter(server => server.name && !server.github?.includes('/servers-archived/'))
   }
 
   async #listServers({ category = 'all', search, limit = 20 } = {}) {
@@ -403,7 +405,7 @@ export class MCPToolsQueryServer {
   }
 
   async #refreshServerList() {
-    await this.#fetchServers();
+    await this.fetchServers();
 
     return {
       content: [

@@ -46,7 +46,7 @@ Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/
   "mcpServers": {
     "servers-search": {
       "command": "npx",
-      "args": ["@atonomus/mcp-servers-search"]
+      "args": ["-y", "@atonomus/mcp-servers-search"]
     }
   }
 }
